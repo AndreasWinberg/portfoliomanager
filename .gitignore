@@ -1,0 +1,12 @@
+#Specific to me
+CLAUDE.md
+plan.md
+
+#Secret
+project.md
+.env
+
+#Irrelevant
+.claude/settings.local.json
+uv.lock
+.venv
