@@ -1,2 +1,2 @@
-def main() -> None:
-    print("Hello from portfoliomanager!")
+def main():
+    return 42
