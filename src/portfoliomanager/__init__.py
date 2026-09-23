@@ -1,2 +1,2 @@
-def main():
-    return 42
+def main() -> int:
+    return 0

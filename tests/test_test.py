@@ -1,5 +1,5 @@
 import portfoliomanager
 
 
-def test_main():
-    assert portfoliomanager.main() == 42
+def test_main() -> None:
+    assert portfoliomanager.main() == 0
