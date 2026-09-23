@@ -1,7 +1,7 @@
 [project]
 name = "portfoliomanager"
 version = "0.1.0"
-description = "Add your description here"
+description = "Price indifferent value investing portfolio manager"
 readme = "README.md"
 authors = [
     { name = "AndreasWinberg", email = "andreaswinberg23@gmail.com" }
@@ -21,3 +21,9 @@ dev = [
     "pytest>=9.1.1",
     "ruff>=0.16.8",
 ]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
