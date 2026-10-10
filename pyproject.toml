@@ -7,7 +7,9 @@ authors = [
     { name = "AndreasWinberg", email = "andreaswinberg23@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "psycopg[binary]>=3.3.6",
+]
 
 [project.scripts]
 portfoliomanager = "portfoliomanager:main"
