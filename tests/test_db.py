@@ -15,6 +15,7 @@ def test_schema() -> None:
 
     assert names == {
         "companies",
+        "securities",
         "reports",
         "prices",
         "splits",
