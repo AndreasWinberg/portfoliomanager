@@ -13,4 +13,11 @@ def test_schema() -> None:
 
     names = {row[0] for row in rows}
 
-    assert names == {"companies", "reports", "prices", "splits", "corporate_actions"}
+    assert names == {
+        "companies",
+        "reports",
+        "prices",
+        "splits",
+        "corporate_actions",
+        "forex",
+    }
