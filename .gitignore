@@ -5,6 +5,7 @@ plan.md
 #Secret
 project.md
 .env
+data/
 
 #Irrelevant
 .claude/settings.local.json
