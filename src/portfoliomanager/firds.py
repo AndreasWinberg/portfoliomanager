@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from xml.etree.ElementTree import iterparse
 from zipfile import ZipFile as Zip
@@ -66,6 +66,8 @@ def download(link: str, folder: Path) -> Path:
     folder.mkdir(exist_ok=True)
     file_name = link.split("/")[-1]
     file_path = folder / file_name
+    if file_path.exists():
+        return file_path
     response = httpx.get(link)
     response.raise_for_status()
     file_path.write_bytes(response.content)
@@ -136,3 +138,21 @@ def read_shares(path: Path) -> tuple[list[dict], int]:
             invalid += 1
 
     return shares, invalid
+
+
+def latest_shares(folder: Path) -> tuple[list[dict], int]:
+    date_start = date.today() - timedelta(days=14)
+    all_shares = []
+    all_invalid = 0
+    files = list_files(date_start, date.today())
+    files = [f for f in files if f["file_name"].startswith("FULINS_E")]
+    if not files:
+        raise ValueError("No files found in the last 14 days.")
+    newest = max(f["publication_date"] for f in files)
+    files = [f for f in files if f["publication_date"] == newest]
+    for file in files:
+        file_path = download(file["download_link"], folder)
+        shares, invalid = read_shares(file_path)
+        all_shares.extend(shares)
+        all_invalid += invalid
+    return all_shares, all_invalid
